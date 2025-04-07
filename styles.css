@@ -1,19 +1,40 @@
+* {
+    margin: 0; /* Remove all margins */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Include padding and border in element's dimensions */
+}
+
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh; /* Ensure the body takes up full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensure elements stretch to full width */
+    justify-content: center;
+    text-align: center;
+    width: 100%; /* Ensure body spans the full width */
+    background-color: white;
+    color: black;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+header, section, footer {
+    width: 100%; /* Ensure full width */
+    padding: 1rem;
+    text-align: center;
 }
 
 header {
     background-color: #333;
     color: #fff;
-    padding: 1rem;
-    text-align: center;
 }
 
 nav ul {
     list-style-type: none;
-    padding: 0;
 }
 
 nav ul li {
@@ -31,11 +52,65 @@ section {
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    background-color: #333; /* Match header background color */
+    color: #fff; /* Ensure text is visible on dark background */
+    padding: 10px;
+}
+
+main {
+    flex: 1; /* Allow main content to grow and push the footer down */
+}
+
+.media {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.media video {
+    flex: 1;
+    max-width: 32%;
+    height: auto;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+header.dark-mode, footer.dark-mode {
+    background-color: #222;
+    color: white;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: #444; /* Dark mode background */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode #theme-toggle {
+    background-color: #f0f0f0; /* Light mode default */
+}
+
+#theme-toggle::before {
+    content: '🌙'; /* Dark mode icon */
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode #theme-toggle::before {
+    content: '☀️'; /* Light mode icon */
 }
